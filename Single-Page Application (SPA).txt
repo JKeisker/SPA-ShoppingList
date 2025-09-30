@@ -14,7 +14,7 @@ How does it work?
 
 
 Begin setting up app: (.Net Framework 4.8.1 !! lol)
-1) create project w/ 'Empty' template and check box: Web API, No Auth
+1) create new ASP.Net Web Application project w/ 'Empty' template and check box: Web API, No Auth
 2) Note: folders 'Controllers' and 'Models' will be used by Web API
 3) Create new HTML page called 'index.html' in project
 4) in 'index'html' add text in 'body', and run > File-View in Browser(google chrome)
