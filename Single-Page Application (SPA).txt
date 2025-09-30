@@ -18,5 +18,6 @@ Begin setting up app: (.Net Framework 4.8.1 !! lol)
 2) Note: folders 'Controllers' and 'Models' will be used by Web API
 3) Create new HTML page called 'index.html' in project
 4) in 'index'html' add text in 'body', and run > File-View in Browser(google chrome)
-5) Add styles.css
-6) install JQuery nuget pkg
+5) Create new jquery script file > app.js
+6) Add styles.css, jquery-3.7.1.min.js, & app.js as references to index.html's head section
+7) install JQuery nuget pkg
