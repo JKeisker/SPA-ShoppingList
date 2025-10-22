@@ -1,3 +1,5 @@
+GitHub: dotNetFramework481_SPA_SimpleShoppingList
+
 youtube tutorial: https://www.youtube.com/watch?v=H5fGvOK9nIc&list=PLJdi8Q7pfZoSkVqM2zP1lsHPLxfIdtPal&index=30
 
 Single-Page Application (SPA)
