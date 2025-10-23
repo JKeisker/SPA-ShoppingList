@@ -3,6 +3,10 @@ GitHub: dotNetFramework481_SPA_SimpleShoppingList
 youtube tutorial: https://www.youtube.com/watch?v=H5fGvOK9nIc&list=PLJdi8Q7pfZoSkVqM2zP1lsHPLxfIdtPal&index=30
 
 Single-Page Application (SPA)
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+Section 1: Intro, Theory & Tools
+      & 2: Building the front end - HTML, CSS & jQuery:
 
 Defintion: Entire app is only single page w/ content replaced as needed
 
@@ -23,3 +27,33 @@ Begin setting up app: (.Net Framework 4.8.1 !! lol)
 5) Create new jquery script file > app.js
 6) Add styles.css, jquery-3.7.1.min.js, & app.js as references to index.html's head section
 7) install JQuery nuget pkg
+
+See code for index.html, app.js, styles.css
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+Section 3: Adding the Web Service - ASP.NET Web API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
