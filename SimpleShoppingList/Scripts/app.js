@@ -60,7 +60,7 @@ function drawItems() {
         var $deleteBtn =
             $("<button onclick='deleteItem(" + i + ")')>D</button>").appendTo($li);
         var $checkBtn =
-            $("<button onclick='checkItem(" + i + ")')>C</button>").appendTo($li);
+            $("<button onclick='checkItem(" + currentItem.id + ")')>C</button>").appendTo($li);
 
         if (currentItem.checked) { 
             $li.addClass("checked");
@@ -75,15 +75,22 @@ function deleteItem(index) {
     drawItems();
 }
 
-function checkItem(index) {
-    var item = currentList.items[index];
-    item.checked = !item.checked;
+function checkItem(itemId) {
+    var changedItem = {};
+
+    for (var i = 0; i < currentList.items.length; i++) {
+        if (currentList.items[i].id == itemId) {
+            changedItem = currentList.items[i];
+        }
+    }
+
+    changedItem.checked = !changedItem.checked;
 
     $.ajax({
         type: "PUT",
         dataType: "json",
-        url: "api/Item/" + index,
-        data: item,
+        url: "api/Item/" + itemId,
+        data: changedItem,
         success: function (result) {
             currentList = result;
             drawItems();
