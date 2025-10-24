@@ -6,8 +6,15 @@ function createShoppingList() {
     currentList.items = new Array();
 
     //Web Service Call
-
-    showShoppingList();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "api/ShoppingList/",
+        data: currentList,
+        success: function (result) {
+            showShoppingList();
+        }
+    });
 }
 
 function showShoppingList() {

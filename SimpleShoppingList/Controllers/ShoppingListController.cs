@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,8 +38,12 @@ namespace SimpleShoppingList.Controllers
         }
 
         // POST: api/ShoppingList
-        public void Post([FromBody]string value)
+        public IEnumerable Post([FromBody]ShoppingList newList)
         {
+            newList.Id = shoppingLists.Count;
+            shoppingLists.Add(newList);
+
+            return shoppingLists;
         }
     }
 }
