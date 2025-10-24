@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleShoppingList.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,8 +11,20 @@ namespace SimpleShoppingList.Controllers
     public class ItemController : ApiController
     {
         // POST: api/Item
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]Item item)
         {
+            ShoppingList shoppingList =
+                ShoppingListController.shoppingLists
+                .Where(s => s.Id == item.ShoppingListId)
+                .FirstOrDefault();
+
+            if (shoppingList == null)
+            {
+                return NotFound();
+            }
+
+            shoppingList.Items.Add(item);
+            return Ok(shoppingList);
         }
 
         // PUT: api/Item/5

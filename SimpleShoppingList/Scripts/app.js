@@ -35,11 +35,19 @@ function showShoppingList() {
 function addItem() {
     var newItem = {};
     newItem.name = $("#newItemName").val();
-    currentList.items.push(newItem);
-    console.info(currentList);
+    newItem.shoppingListId = currentList.id;
 
-    drawItems();
-    $("#newItemName").val("");
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "api/Item/",
+        data: newItem,
+        success: function (result) {
+            currentList = result;
+            drawItems();
+            $("#newItemName").val("");
+        }
+    });
 }
 
 function drawItems() {
