@@ -1,4 +1,5 @@
-﻿var currentList = {};
+﻿
+var currentList = {};
 
 function createShoppingList() {
     currentList.name = $("#shoppingListName").val();
@@ -65,17 +66,16 @@ function checkItem(index) {
 }
 
 function getShoppingListById(id) {
-    console.info(id);
-
-    currentList.name = "Mock Shopping List";
-    currentList.items = [
-        { name: "Milk" },
-        { name: "Cornflakes" },
-        { name: "Strawberries" }
-    ];
-
-    showShoppingList();
-    drawItems();
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "api/ShoppingList/" + id,
+        success: function (result) {
+            currentList = result;
+            showShoppingList();
+            drawItems();
+        }
+    });
 }
 
 $(document).ready(function () {
