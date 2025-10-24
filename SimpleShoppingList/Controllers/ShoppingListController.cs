@@ -12,7 +12,12 @@ namespace SimpleShoppingList.Controllers
     {
         List<ShoppingList> shoppingLists = new List<ShoppingList>
         {
-            new ShoppingList() {Id = 0, Name = "Groceries"},
+            new ShoppingList() {Id = 0, Name = "Groceries", Items = {
+                    new Item { Name = "Milk" },
+                    new Item { Name = "Cornflakes" },
+                    new Item { Name = "Strawberries" }
+                }
+            },
             new ShoppingList() {Id = 1, Name = "Hardware"}
         };
 
@@ -24,7 +29,7 @@ namespace SimpleShoppingList.Controllers
 
             if (result == null)
             {
-                return NotFound();
+                //return NotFound();
             }
 
             return Ok(result);
