@@ -58,7 +58,7 @@ function drawItems() {
         var $li = $("<li>").html(currentItem.name)
             .attr("id", "item_" + i);
         var $deleteBtn =
-            $("<button onclick='deleteItem(" + i + ")')>D</button>").appendTo($li);
+            $("<button onclick='deleteItem(" + currentItem.id + ")')>D</button>").appendTo($li);
         var $checkBtn =
             $("<button onclick='checkItem(" + currentItem.id + ")')>C</button>").appendTo($li);
 
@@ -70,9 +70,16 @@ function drawItems() {
     }
 }
 
-function deleteItem(index) {
-    currentList.items.splice(index, 1);
-    drawItems();
+function deleteItem(itemId) {
+    $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "api/Item/" + itemId,
+        success: function (result) {
+            currentList = result;
+            drawItems();
+        }
+    });
 }
 
 function checkItem(itemId) {
