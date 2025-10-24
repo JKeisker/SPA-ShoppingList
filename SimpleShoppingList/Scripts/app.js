@@ -62,6 +62,10 @@ function drawItems() {
         var $checkBtn =
             $("<button onclick='checkItem(" + i + ")')>C</button>").appendTo($li);
 
+        if (currentItem.checked) { 
+            $li.addClass("checked");
+        }
+
         $li.appendTo($list);
     }
 }
@@ -72,12 +76,19 @@ function deleteItem(index) {
 }
 
 function checkItem(index) {
-    if ($("#item_" + index).hasClass("checked")) {
-        $("#item_" + index).removeClass("checked");
-    }
-    else {
-        $("#item_" + index).addClass("checked");
-    }
+    var item = currentList.items[index];
+    item.checked = !item.checked;
+
+    $.ajax({
+        type: "PUT",
+        dataType: "json",
+        url: "api/Item/" + index,
+        data: item,
+        success: function (result) {
+            currentList = result;
+            drawItems();
+        }
+    });
 }
 
 function getShoppingListById(id) {
