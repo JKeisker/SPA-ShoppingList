@@ -14,6 +14,7 @@ function createShoppingList() {
         success: function (result) {
             currentList = result;
             showShoppingList();
+            history.pushState({ id: result.id }, result.name, "?id=" + result.id);
         }
     });
 }
@@ -25,7 +26,9 @@ function showShoppingList() {
     $("#createListDiv").hide();
     $("#shoppingListDiv").show();
 
+    $("#newItemName").val("");
     $("#newItemName").focus();
+    $("#newItemName").unbind("keyup");
     $("#newItemName").keyup(function (event) {
         if (event.keyCode == 13) {
             addItem();
@@ -119,19 +122,38 @@ function getShoppingListById(id) {
     });
 }
 
-$(document).ready(function () {
-    console.info("ready");
+function hideShoppingList() {
+    $("#createListDiv").show();
+    $("#shoppingListDev").hide();
+
+    $("#shoppingListName").val();
     $("#shoppingListName").focus();
+    $("#shoppingListName").unbind("keyup");
     $("#shoppingListName").keyup(function (event) {
-        if (event.keyCode == 13) { 
+        if (event.keyCode == 13) {
             createShoppingList();
         }
     });
+}
+
+$(document).ready(function () {
+    console.info("ready");
+
+    hideShoppingList();
 
     var pageUrl = window.location.href;
     var idIndex = pageUrl.indexOf("?id=");
     if (idIndex != -1) {
         getShoppingListById(pageUrl.substring(idIndex + 4));
     }
+
+    window.onpopstate = function (event) {
+        if (event.state == null) {
+            hideShoppingList();
+        }
+        else {
+            getShoppingListById(event.state.id);
+        }
+    };
 });
 
