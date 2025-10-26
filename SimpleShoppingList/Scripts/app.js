@@ -44,7 +44,7 @@ function addItem() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "api/Item/",
+        url: "api/ItemsEF/",
         data: newItem,
         success: function (result) {
             currentList = result;
@@ -100,10 +100,10 @@ function checkItem(itemId) {
     $.ajax({
         type: "PUT",
         dataType: "json",
-        url: "api/Item/" + itemId,
+        url: "api/ItemsEF/" + itemId,
         data: changedItem,
         success: function (result) {
-            currentList = result;
+            changedItem = result;
             drawItems();
         }
     });
