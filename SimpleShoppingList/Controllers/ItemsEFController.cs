@@ -97,7 +97,7 @@ namespace SimpleShoppingList.Controllers
         }
 
         // DELETE: api/ItemsEF/5
-        [ResponseType(typeof(Item))]
+        [ResponseType(typeof(ShoppingList))]
         public IHttpActionResult DeleteItem(int id)
         {
             Item item = db.Items.Find(id);
@@ -106,10 +106,15 @@ namespace SimpleShoppingList.Controllers
                 return NotFound();
             }
 
+            ShoppingList shoppingList = db.ShoppingLists
+                .Where(s => s.Id == item.ShoppingListId)
+                .Include(s => s.Items)
+                .FirstOrDefault();
+
             db.Items.Remove(item);
             db.SaveChanges();
 
-            return Ok(item);
+            return Ok(shoppingList);
         }
 
         protected override void Dispose(bool disposing)

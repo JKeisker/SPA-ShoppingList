@@ -78,7 +78,7 @@ function deleteItem(itemId) {
     $.ajax({
         type: "DELETE",
         dataType: "json",
-        url: "api/Item/" + itemId,
+        url: "api/ItemsEF/" + itemId,
         success: function (result) {
             currentList = result;
             drawItems();
