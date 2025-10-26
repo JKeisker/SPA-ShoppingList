@@ -34,8 +34,10 @@ See code for index.html, app.js, styles.css
 --------------------------------------------------------------------------------------------------------------
 Section 3: Adding the Web Service - ASP.NET Web API
 
+For JSON serialization to work, must add JsonMediaTypeFormatter configuration to WebApiConfig.cs (Chpt 22)
 
 
+Section 4: Persistence w/ EF
 
 
 
