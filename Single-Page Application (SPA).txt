@@ -39,23 +39,4 @@ For JSON serialization to work, must add JsonMediaTypeFormatter configuration to
 
 Section 4: Persistence w/ EF
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+See Udemy course referenced above
